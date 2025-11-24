@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>MiniCalendar Changelog</title>
+        <link>https://raw.githubusercontent.com/pingfan-fan/MiniCalendar/main/appcast.xml</link>
+        <description>Most recent changes with links to updates.</description>
+        <language>zh-CN</language>
+
+        <!-- Example item - Update this with each new release -->
+        <item>
+            <title>Version 1.5.1</title>
+            <link>https://github.com/pingfan-fan/MiniCalendar/releases/tag/v1.5.1</link>
+            <sparkle:version>1.5.1</sparkle:version>
+            <sparkle:shortVersionString>1.5.1</sparkle:shortVersionString>
+            <description><![CDATA[
+                <h2>新功能 / New Features</h2>
+                <ul>
+                    <li>交换了提醒列表中"单次"和"逾期"的顺序，单次提醒现在显示在前面</li>
+                    <li>Swapped the order of "One-time" and "Overdue" reminders - one-time reminders now appear first</li>
+                </ul>
+
+                <h2>改进 / Improvements</h2>
+                <ul>
+                    <li>添加了自动更新功能</li>
+                    <li>Added automatic update functionality</li>
+                </ul>
+            ]]></description>
+            <pubDate>Sun, 24 Nov 2025 15:00:00 +0800</pubDate>
+            <enclosure url="https://github.com/pingfan-fan/MiniCalendar/releases/download/v1.5.1/MiniCalendar-v1.5.1.zip"
+                       sparkle:version="1.5.1"
+                       sparkle:shortVersionString="1.5.1"
+                       length="0"
+                       type="application/octet-stream" />
+        </item>
+
+        <!-- Previous version example -->
+        <item>
+            <title>Version 1.5.0</title>
+            <link>https://github.com/pingfan-fan/MiniCalendar/releases/tag/v1.5.0</link>
+            <sparkle:version>1.5.0</sparkle:version>
+            <sparkle:shortVersionString>1.5.0</sparkle:shortVersionString>
+            <description><![CDATA[
+                <h2>功能 / Features</h2>
+                <ul>
+                    <li>修复了无日期提醒的显示问题</li>
+                    <li>Fixed undated reminders display</li>
+                </ul>
+            ]]></description>
+            <pubDate>Wed, 20 Nov 2025 10:00:00 +0800</pubDate>
+            <enclosure url="https://github.com/pingfan-fan/MiniCalendar/releases/download/v1.5.0/MiniCalendar-v1.5.0.zip"
+                       sparkle:version="1.5.0"
+                       sparkle:shortVersionString="1.5.0"
+                       length="0"
+                       type="application/octet-stream" />
+        </item>
+    </channel>
+</rss>

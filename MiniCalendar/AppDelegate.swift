@@ -9,6 +9,7 @@ import SwiftUI
 import AppKit
 import Combine
 import CoreText
+import Sparkle
 
 class AppDelegate: NSObject,NSApplicationDelegate, NSWindowDelegate {
     var statusItem: NSStatusItem!
@@ -19,6 +20,7 @@ class AppDelegate: NSObject,NSApplicationDelegate, NSWindowDelegate {
     private var cancellables = Set<AnyCancellable>()
     private var keyboardEventMonitor: Any?
     private var calendarManager: CalendarManager?
+    private var updaterController: SPUStandardUpdaterController?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         // Register bundled custom font
@@ -26,6 +28,9 @@ class AppDelegate: NSObject,NSApplicationDelegate, NSWindowDelegate {
 
         // Apply appearance mode
         applyAppearanceMode()
+
+        // Initialize Sparkle updater
+        updaterController = SPUStandardUpdaterController(startingUpdater: true, updaterDelegate: nil, userDriverDelegate: nil)
 
         // Initialize shared CalendarManager once
         Task { @MainActor in
@@ -89,9 +94,17 @@ class AppDelegate: NSObject,NSApplicationDelegate, NSWindowDelegate {
         if event.type == .rightMouseUp {
             let menu = NSMenu()
             menu.addItem(NSMenuItem(title: LocalizationHelper.settings, action: #selector(showSettingsWindow), keyEquivalent: ","))
+
+            // Add "Check for Updates" menu item
+            if let updaterController = updaterController {
+                let updateMenuItem = NSMenuItem(title: LocalizationHelper.checkForUpdates, action: #selector(SPUStandardUpdaterController.checkForUpdates(_:)), keyEquivalent: "")
+                updateMenuItem.target = updaterController
+                menu.addItem(updateMenuItem)
+            }
+
             menu.addItem(NSMenuItem.separator())
             menu.addItem(NSMenuItem(title: LocalizationHelper.quit, action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
-            
+
             statusItem.menu = menu
             statusItem.button?.performClick(nil)
             statusItem.menu = nil

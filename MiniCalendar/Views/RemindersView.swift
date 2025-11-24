@@ -364,26 +364,17 @@ struct RemindersView: View {
             } else {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 12) {
-                        // Overdue reminders
-                        if !overdueReminders.isEmpty {
-                            Text(LocalizationHelper.overdueReminders)
+                        // One-time reminders
+                        if !oneTimeReminders.isEmpty {
+                            Text(LocalizationHelper.oneTimeReminders)
                                 .font(.customSize(14))
                                 .foregroundColor(.secondary)
                                 .padding(.leading, 16)
 
-                            ForEach(overdueReminders) { item in
+                            ForEach(oneTimeReminders) { item in
                                 HStack(alignment: .center, spacing: 8) {
                                     VStack(alignment: .leading, spacing: 2) {
-                                        if item.reminder.isRecurring {
-                                            // Date range split into two lines for recurring
-                                            let dateLines = getDateRangeLines(for: item)
-                                            ForEach(0..<dateLines.count, id: \.self) { index in
-                                                Text(dateLines[index])
-                                                    .font(.customSize(dateStringIncludesYear(dateLines[index]) ? 10 : 12))
-                                                    .foregroundColor(.secondary)
-                                            }
-                                        } else if let date = item.date {
-                                            // Single date for one-time
+                                        if let date = item.date {
                                             let dateText = formatDate(date)
                                             Text(dateText)
                                                 .font(.customSize(dateStringIncludesYear(dateText) ? 10 : 12))
@@ -416,22 +407,31 @@ struct RemindersView: View {
                             }
                         }
 
-                        // One-time reminders
-                        if !oneTimeReminders.isEmpty {
-                            if !overdueReminders.isEmpty {
+                        // Overdue reminders
+                        if !overdueReminders.isEmpty {
+                            if !oneTimeReminders.isEmpty {
                                 Divider()
                                     .padding(.vertical, 8)
                             }
 
-                            Text(LocalizationHelper.oneTimeReminders)
+                            Text(LocalizationHelper.overdueReminders)
                                 .font(.customSize(14))
                                 .foregroundColor(.secondary)
                                 .padding(.leading, 16)
 
-                            ForEach(oneTimeReminders) { item in
+                            ForEach(overdueReminders) { item in
                                 HStack(alignment: .center, spacing: 8) {
                                     VStack(alignment: .leading, spacing: 2) {
-                                        if let date = item.date {
+                                        if item.reminder.isRecurring {
+                                            // Date range split into two lines for recurring
+                                            let dateLines = getDateRangeLines(for: item)
+                                            ForEach(0..<dateLines.count, id: \.self) { index in
+                                                Text(dateLines[index])
+                                                    .font(.customSize(dateStringIncludesYear(dateLines[index]) ? 10 : 12))
+                                                    .foregroundColor(.secondary)
+                                            }
+                                        } else if let date = item.date {
+                                            // Single date for one-time
                                             let dateText = formatDate(date)
                                             Text(dateText)
                                                 .font(.customSize(dateStringIncludesYear(dateText) ? 10 : 12))

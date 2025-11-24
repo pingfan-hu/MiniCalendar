@@ -202,6 +202,10 @@ struct LocalizationHelper {
         isChinese ? "设置" : "Settings"
     }
 
+    static var checkForUpdates: String {
+        isChinese ? "检查更新" : "Check for Updates"
+    }
+
     static var quit: String {
         isChinese ? "退出" : "Quit"
     }

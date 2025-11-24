@@ -12,5 +12,13 @@
 	<string>MiniCalendar needs full access to your reminders to display them alongside your events.</string>
 	<key>ATSApplicationFontsPath</key>
 	<string>.</string>
+	<key>SUFeedURL</key>
+	<string>https://raw.githubusercontent.com/pingfan-fan/MiniCalendar/main/appcast.xml</string>
+	<key>SUEnableAutomaticChecks</key>
+	<true/>
+	<key>SUScheduledCheckInterval</key>
+	<integer>86400</integer>
+	<key>SUAllowsAutomaticUpdates</key>
+	<true/>
 </dict>
 </plist>
