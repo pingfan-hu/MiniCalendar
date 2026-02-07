@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
     <channel>
         <title>MiniCalendar Changelog</title>
-        <link>https://raw.githubusercontent.com/pingfan-fan/MiniCalendar/main/appcast.xml</link>
+        <link>https://raw.githubusercontent.com/pingfan-hu/MiniCalendar/main/appcast.xml</link>
         <description>Most recent changes with links to updates.</description>
-        <language>zh-CN</language>
+        <language>en</language>
 
         <!-- Latest release -->
         <item>
@@ -13,17 +13,20 @@
             <sparkle:version>1.6.1</sparkle:version>
             <sparkle:shortVersionString>1.6.1</sparkle:shortVersionString>
             <description><![CDATA[
-                <h2>改进 / Improvements</h2>
+                <h2>Improvements</h2>
                 <ul>
-                    <li>点击菜单栏其他内容时，日历面板自动关闭</li>
                     <li>Popover now auto-dismisses when clicking other menu bar items</li>
+                </ul>
+                <h2>Bug Fixes</h2>
+                <ul>
+                    <li>Fixed Sparkle auto-update feed URL pointing to wrong repository</li>
                 </ul>
             ]]></description>
             <pubDate>Fri, 07 Feb 2026 12:00:00 +0800</pubDate>
             <enclosure url="https://github.com/pingfan-hu/MiniCalendar/releases/download/v1.6.1/MiniCalendar-v1.6.1.zip"
                        sparkle:version="1.6.1"
                        sparkle:shortVersionString="1.6.1"
-                       length="15561477"
+                       length="15561481"
                        type="application/octet-stream" />
         </item>
 
@@ -34,17 +37,14 @@
             <sparkle:version>1.6.0</sparkle:version>
             <sparkle:shortVersionString>1.6.0</sparkle:shortVersionString>
             <description><![CDATA[
-                <h2>新功能 / New Features</h2>
+                <h2>New Features</h2>
                 <ul>
-                    <li><strong>自动更新</strong>：添加了内置的更新检查功能（基于 Sparkle 框架）</li>
                     <li><strong>Automatic Updates</strong>: Added built-in update checker powered by Sparkle</li>
-                    <li>可通过右键菜单检查更新（检查更新 / Check for Updates）</li>
-                    <li>每日自动检查更新，支持自动下载安装</li>
+                    <li>Check for updates via right-click menu</li>
+                    <li>Daily automatic update checks with auto-download support</li>
                 </ul>
-
-                <h2>改进 / Improvements</h2>
+                <h2>Improvements</h2>
                 <ul>
-                    <li>优化提醒列表顺序："单次"提醒现在显示在"逾期"提醒之前</li>
                     <li>Reordered reminder sections: "One-time" now appears before "Overdue"</li>
                 </ul>
             ]]></description>
@@ -56,21 +56,20 @@
                        type="application/octet-stream" />
         </item>
 
-        <!-- Previous version example -->
+        <!-- Previous release -->
         <item>
             <title>Version 1.5.0</title>
-            <link>https://github.com/pingfan-fan/MiniCalendar/releases/tag/v1.5.0</link>
+            <link>https://github.com/pingfan-hu/MiniCalendar/releases/tag/v1.5.0</link>
             <sparkle:version>1.5.0</sparkle:version>
             <sparkle:shortVersionString>1.5.0</sparkle:shortVersionString>
             <description><![CDATA[
-                <h2>功能 / Features</h2>
+                <h2>Bug Fixes</h2>
                 <ul>
-                    <li>修复了无日期提醒的显示问题</li>
                     <li>Fixed undated reminders display</li>
                 </ul>
             ]]></description>
             <pubDate>Wed, 20 Nov 2025 10:00:00 +0800</pubDate>
-            <enclosure url="https://github.com/pingfan-fan/MiniCalendar/releases/download/v1.5.0/MiniCalendar-v1.5.0.zip"
+            <enclosure url="https://github.com/pingfan-hu/MiniCalendar/releases/download/v1.5.0/MiniCalendar-v1.5.0.zip"
                        sparkle:version="1.5.0"
                        sparkle:shortVersionString="1.5.0"
                        length="0"
