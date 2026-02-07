@@ -50,17 +50,18 @@ xcrun notarytool history --keychain-profile "notarytool-profile"
 
 ### 0. Update Version Number (IMPORTANT!)
 
-Before building, update the `MARKETING_VERSION` in the Xcode project:
+Before building, update both `MARKETING_VERSION` and `CURRENT_PROJECT_VERSION` in the Xcode project:
 
 ```bash
 # Update version in project.pbxproj (replace X.X.X with your version)
 sed -i '' 's/MARKETING_VERSION = [0-9.]*;/MARKETING_VERSION = X.X.X;/g' MiniCalendar.xcodeproj/project.pbxproj
+sed -i '' 's/CURRENT_PROJECT_VERSION = [0-9.]*;/CURRENT_PROJECT_VERSION = X.X.X;/g' MiniCalendar.xcodeproj/project.pbxproj
 
-# Verify the change
-grep "MARKETING_VERSION" MiniCalendar.xcodeproj/project.pbxproj
+# Verify the changes
+grep "MARKETING_VERSION\|CURRENT_PROJECT_VERSION" MiniCalendar.xcodeproj/project.pbxproj
 ```
 
-This ensures the version displays correctly in Settings → About.
+**Both must match.** `MARKETING_VERSION` = `CFBundleShortVersionString` (display version), `CURRENT_PROJECT_VERSION` = `CFBundleVersion` (build number used by Sparkle for update comparison).
 
 ### 1. Build Release Version
 ```bash
@@ -360,7 +361,7 @@ Common issues:
 
 ## Complete Release Checklist
 
-- [ ] **Update version number in Xcode project** (MARKETING_VERSION)
+- [ ] **Update version numbers in Xcode project** (MARKETING_VERSION and CURRENT_PROJECT_VERSION)
 - [ ] Build Release version with `clean build`
 - [ ] Sign app with entitlements file
 - [ ] Verify entitlements are embedded
@@ -387,7 +388,8 @@ Common issues:
 ```bash
 # 0. Update version number (replace 1.X.X with your version)
 sed -i '' 's/MARKETING_VERSION = [0-9.]*;/MARKETING_VERSION = 1.X.X;/g' MiniCalendar.xcodeproj/project.pbxproj
-grep "MARKETING_VERSION" MiniCalendar.xcodeproj/project.pbxproj
+sed -i '' 's/CURRENT_PROJECT_VERSION = [0-9.]*;/CURRENT_PROJECT_VERSION = 1.X.X;/g' MiniCalendar.xcodeproj/project.pbxproj
+grep "MARKETING_VERSION\|CURRENT_PROJECT_VERSION" MiniCalendar.xcodeproj/project.pbxproj
 
 # 1. Build
 xcodebuild -project MiniCalendar.xcodeproj -scheme MiniCalendar -configuration Release clean build
