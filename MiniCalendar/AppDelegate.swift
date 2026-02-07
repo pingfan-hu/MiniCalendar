@@ -19,6 +19,7 @@ class AppDelegate: NSObject,NSApplicationDelegate, NSWindowDelegate {
     private var calendarIcon = CalendarIcon()
     private var cancellables = Set<AnyCancellable>()
     private var keyboardEventMonitor: Any?
+    private var mouseEventMonitor: Any?
     private var calendarManager: CalendarManager?
     private var updaterController: SPUStandardUpdaterController?
 
@@ -78,8 +79,11 @@ class AppDelegate: NSObject,NSApplicationDelegate, NSWindowDelegate {
     }
 
     deinit {
-        // Clean up event monitor
+        // Clean up event monitors
         if let monitor = keyboardEventMonitor {
+            NSEvent.removeMonitor(monitor)
+        }
+        if let monitor = mouseEventMonitor {
             NSEvent.removeMonitor(monitor)
         }
         // Clean up notification observers
@@ -147,20 +151,88 @@ class AppDelegate: NSObject,NSApplicationDelegate, NSWindowDelegate {
         NSApp.activate(ignoringOtherApps: true)
         popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
         popover.contentViewController?.view.window?.makeKey()
+        
+        // Start monitoring for clicks outside the popover
+        startMouseEventMonitor()
+    }
+    
+    private func startMouseEventMonitor() {
+        // Remove existing monitor if any
+        if let monitor = mouseEventMonitor {
+            NSEvent.removeMonitor(monitor)
+            mouseEventMonitor = nil
+        }
+        
+        // Only monitor if popover is not pinned
+        guard !SettingsManager.isPopoverPinned else { return }
+        
+        mouseEventMonitor = NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseDown, .rightMouseDown]) { [weak self] event in
+            guard let self = self, self.popover.isShown else { return }
+            
+            // Check if click is outside both the popover and the status bar button
+            if let popoverWindow = self.popover.contentViewController?.view.window,
+               let statusButton = self.statusItem.button {
+                
+                let clickLocation = event.locationInWindow
+                
+                // Convert click location to screen coordinates
+                guard let eventWindow = event.window else {
+                    // Click was outside any window, close the popover
+                    self.closePopover()
+                    return
+                }
+                
+                let screenLocation = eventWindow.convertPoint(toScreen: clickLocation)
+                
+                // Check if click is inside popover
+                let popoverFrame = popoverWindow.frame
+                if popoverFrame.contains(screenLocation) {
+                    return
+                }
+                
+                // Check if click is inside status bar button
+                if let buttonWindow = statusButton.window {
+                    let buttonFrameInWindow = statusButton.convert(statusButton.bounds, to: nil)
+                    let buttonFrameInScreen = buttonWindow.convertToScreen(buttonFrameInWindow)
+                    if buttonFrameInScreen.contains(screenLocation) {
+                        return
+                    }
+                }
+                
+                // Click was outside both popover and button, close it
+                self.closePopover()
+            }
+        }
+    }
+    
+    private func stopMouseEventMonitor() {
+        if let monitor = mouseEventMonitor {
+            NSEvent.removeMonitor(monitor)
+            mouseEventMonitor = nil
+        }
     }
 
     @objc func closePopover() {
         popover.performClose(nil)
+        stopMouseEventMonitor()
     }
 
     @objc func closePopoverIfNotPinned() {
         if !SettingsManager.isPopoverPinned {
             popover.performClose(nil)
+            stopMouseEventMonitor()
         }
     }
 
     @objc func handlePinStateChanged() {
         updatePopoverBehavior()
+        
+        // Update mouse event monitoring based on pin state
+        if SettingsManager.isPopoverPinned {
+            stopMouseEventMonitor()
+        } else if popover.isShown {
+            startMouseEventMonitor()
+        }
     }
 
     @objc func handleAppearanceModeChanged() {

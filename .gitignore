@@ -1,7 +1,6 @@
 .claude/
 .DS_Store
 release/
-RELEASE.md
 # Xcode user data
 xcuserdata/
 *.xcuserstate

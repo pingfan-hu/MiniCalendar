@@ -8,6 +8,27 @@
 
         <!-- Latest release -->
         <item>
+            <title>Version 1.6.1</title>
+            <link>https://github.com/pingfan-hu/MiniCalendar/releases/tag/v1.6.1</link>
+            <sparkle:version>1.6.1</sparkle:version>
+            <sparkle:shortVersionString>1.6.1</sparkle:shortVersionString>
+            <description><![CDATA[
+                <h2>改进 / Improvements</h2>
+                <ul>
+                    <li>点击菜单栏其他内容时，日历面板自动关闭</li>
+                    <li>Popover now auto-dismisses when clicking other menu bar items</li>
+                </ul>
+            ]]></description>
+            <pubDate>Fri, 07 Feb 2026 12:00:00 +0800</pubDate>
+            <enclosure url="https://github.com/pingfan-hu/MiniCalendar/releases/download/v1.6.1/MiniCalendar-v1.6.1.zip"
+                       sparkle:version="1.6.1"
+                       sparkle:shortVersionString="1.6.1"
+                       length="15561477"
+                       type="application/octet-stream" />
+        </item>
+
+        <!-- Previous release -->
+        <item>
             <title>Version 1.6.0</title>
             <link>https://github.com/pingfan-hu/MiniCalendar/releases/tag/v1.6.0</link>
             <sparkle:version>1.6.0</sparkle:version>
