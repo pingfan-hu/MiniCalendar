@@ -87,7 +87,7 @@ No .strings/.lproj files. All strings are in `LocalizationHelper.swift` as stati
 
 ### Sparkle Auto-Update
 - `SPUStandardUpdaterController` initialized in `AppDelegate.applicationDidFinishLaunching`
-- Feed URL: `https://raw.githubusercontent.com/pingfan-fan/MiniCalendar/main/appcast.xml`
+- Feed URL: `https://raw.githubusercontent.com/pingfan-hu/MiniCalendar/main/appcast.xml`
 - "Check for Updates" menu item in right-click menu
 - Auto-checks daily (86400 second interval)
 
