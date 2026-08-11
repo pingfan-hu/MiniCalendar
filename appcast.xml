@@ -8,6 +8,28 @@
 
         <!-- Latest release -->
         <item>
+            <title>Version 1.6.2</title>
+            <link>https://github.com/pingfan-hu/MiniCalendar/releases/tag/v1.6.2</link>
+            <sparkle:version>1.6.2</sparkle:version>
+            <sparkle:shortVersionString>1.6.2</sparkle:shortVersionString>
+            <description><![CDATA[
+                <h2>Changes</h2>
+                <ul>
+                    <li>Redesigned menu bar icon: an outlined rounded-rect badge with a mini calendar, matching the size and style of the system input method icon.</li>
+                    <li>The icon inverts to a solid badge the moment the calendar panel opens, just like the input method icon when engaged.</li>
+                    <li>The icon is drawn as resolution-independent vector art, so it stays crisp at every display scaling.</li>
+                </ul>
+            ]]></description>
+            <pubDate>Tue, 11 Aug 2026 20:14:05 +0000</pubDate>
+            <enclosure url="https://github.com/pingfan-hu/MiniCalendar/releases/download/v1.6.2/MiniCalendar-v1.6.2.zip"
+                       sparkle:version="1.6.2"
+                       sparkle:shortVersionString="1.6.2"
+                       length="15565276"
+                       type="application/octet-stream" />
+        </item>
+
+        <!-- Previous release -->
+        <item>
             <title>Version 1.6.1</title>
             <link>https://github.com/pingfan-hu/MiniCalendar/releases/tag/v1.6.1</link>
             <sparkle:version>1.6.1</sparkle:version>
@@ -56,24 +78,5 @@
                        type="application/octet-stream" />
         </item>
 
-        <!-- Previous release -->
-        <item>
-            <title>Version 1.5.0</title>
-            <link>https://github.com/pingfan-hu/MiniCalendar/releases/tag/v1.5.0</link>
-            <sparkle:version>1.5.0</sparkle:version>
-            <sparkle:shortVersionString>1.5.0</sparkle:shortVersionString>
-            <description><![CDATA[
-                <h2>Bug Fixes</h2>
-                <ul>
-                    <li>Fixed undated reminders display</li>
-                </ul>
-            ]]></description>
-            <pubDate>Wed, 20 Nov 2025 10:00:00 +0800</pubDate>
-            <enclosure url="https://github.com/pingfan-hu/MiniCalendar/releases/download/v1.5.0/MiniCalendar-v1.5.0.zip"
-                       sparkle:version="1.5.0"
-                       sparkle:shortVersionString="1.5.0"
-                       length="0"
-                       type="application/octet-stream" />
-        </item>
     </channel>
 </rss>

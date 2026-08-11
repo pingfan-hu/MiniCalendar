@@ -27,16 +27,16 @@ security find-identity -v -p codesigning
 ```
 
 ### Notarization Credentials
-- **Apple ID**: pingfan0727@gmail.com
+- **Apple ID**: apple.us@pingfan.org
 - **Team ID**: XC2WL5WN7J
-- **App-Specific Password**: `vsnu-xqac-xvth-skvi`
+- **App-Specific Password**: stored in the macOS Keychain under the `notarytool-profile` profile — never write it in this file. Generate a new one at account.apple.com → Sign-In and Security → App-Specific Passwords if it needs replacing (changing the Apple ID password revokes all app-specific passwords).
 
 #### Setup Notarization Profile (One-time)
+Run interactively so the password is prompted, not recorded:
 ```bash
 xcrun notarytool store-credentials "notarytool-profile" \
-  --apple-id "pingfan0727@gmail.com" \
-  --team-id "XC2WL5WN7J" \
-  --password "vsnu-xqac-xvth-skvi"
+  --apple-id "apple.us@pingfan.org" \
+  --team-id "XC2WL5WN7J"
 ```
 
 Verify credentials are stored:
@@ -437,4 +437,4 @@ rm -rf dist/dmg-temp
 
 **Last Updated**: 2025-10-21
 **Project**: MiniCalendar
-**Maintainer**: Pingfan Hu (pingfan0727@gmail.com)
+**Maintainer**: Pingfan Hu (apple.us@pingfan.org)
